@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button {
+    @apply px-[22px] py-[13px] font-semibold bg-[#FF3811] hover:bg-[#e0320f] rounded-md text-white
+}
+.button-outline{
+    @apply px-5 py-[10px] hover:bg-[#FF3811] transition delay-100 hover:text-white rounded-md border border-[#FF3811] font-semibold text-[#FF3811]
+}
+.text-orange {
+    @apply text-[#FF3811]
+}
+.bg-orange{
+    @apply bg-[#FF3811]
+}
