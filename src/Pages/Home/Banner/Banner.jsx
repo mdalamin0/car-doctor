@@ -12,8 +12,8 @@ const Banner = () => {
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={img5} className="w-full rounded-xl" />
                 <div className="absolute h-full rounded-xl flex items-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]]">
-                    <div className='text-white pl-24 w-[460px] space-y-7'>
-                        <h2 className='text-6xl font-bold leading-tight'>Affordable Price For Car Servicing</h2>
+                    <div className='text-white pl-8 md:pl-24 md:w-[460px] space-y-7'>
+                        <h2 className='text-2xl md:text-6xl font-bold leading-tight'>Affordable Price For Car Servicing</h2>
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form </p>
                         <div>
                             <button className="button me-5">Discover More</button>
