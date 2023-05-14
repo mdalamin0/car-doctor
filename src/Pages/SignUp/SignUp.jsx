@@ -3,6 +3,7 @@ import img from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const {createUser} = useContext(AuthContext);
@@ -71,7 +72,8 @@ const SignUp = () => {
                         </div>
                     </form>
                     <div className='card-body text-center'>
-                        <h3 className='text-[18px] font-semibold'>Or Sign In with</h3>
+                        <h3 className='text-[18px] font-semibold mb-4 '>Or Sign In with</h3>
+                        <SocialLogin></SocialLogin>
                         <p className='font-semibold'>Already have an account?<Link to='/login' className='text-orange ms-3'>Login</Link> </p>
                     </div>
                 </div>

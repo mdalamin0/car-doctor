@@ -3,18 +3,33 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
 import { HiXCircle } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 
 const Bookings = () => {
     const { user } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
+    const navigate = useNavigate();
 
     const url = `http://localhost:5000/checkout?email=${user?.email}`;
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                authorization : `Bearer ${localStorage.getItem('car-access-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [url])
+            .then(data => {
+                if(!data.error){
+                    setBookings(data)
+                }
+                else{
+                    // logout and then navigate
+                    navigate('/');
+                }
+            })
+    }, [url, navigate])
 
     const handleDelete = (id) => {
 

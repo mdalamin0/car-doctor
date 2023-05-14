@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault();
@@ -17,7 +20,9 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                console.log(user)
+               
+                navigate(from, { replace: true })
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -25,6 +30,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1800
                 })
+               
                 form.reset()
             })
             .catch(error => {
@@ -62,8 +68,10 @@ const Login = () => {
                             </div>
                         </div>
                     </form>
+                    
                     <div className='card-body text-center'>
-                        <h3 className='text-[18px] font-semibold'>Or Sign In with</h3>
+                        <h3 className='text-[18px] font-semibold mb-4'>Or Sign In with</h3>
+                        <SocialLogin></SocialLogin>
                         <p className='font-semibold'>New to Car Doctors?<Link to='/signUp' className='text-orange ms-3'>Sign Up</Link> </p>
                     </div>
                 </div>
