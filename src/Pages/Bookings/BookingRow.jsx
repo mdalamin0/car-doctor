@@ -1,12 +1,14 @@
+import { HiOutlineCheckCircle, HiXCircle } from "react-icons/hi";
+
+const BookingRow = ({ booking, handleDelete, handleBookingConfirm }) => {
+    const { _id, img, price, date, status } = booking;
 
 
-const BookingRow = ({ booking }) => {
-    const {img, price, date} = booking;
     return (
         <tr>
             <th>
-                <label>
-                    <input type="checkbox" className="checkbox" />
+                <label className="text-3xl cursor-pointer">
+                    <HiXCircle onClick={() => handleDelete(_id)}></HiXCircle>
                 </label>
             </th>
             <td>
@@ -25,7 +27,10 @@ const BookingRow = ({ booking }) => {
                 {date}
             </td>
             <th>
-                <button className="button ">details</button>
+                {
+                    status === 'confirm' ? <div className="flex items-center"><span className="font-bold text-green-700">Confirmed</span> <HiOutlineCheckCircle className="text-2xl text-green-700 ms-2"></HiOutlineCheckCircle> </div> :
+                        <button onClick={() => handleBookingConfirm(_id)} className="button ">Confirm</button>
+                }
             </th>
         </tr>
     );
